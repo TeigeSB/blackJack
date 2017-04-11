@@ -132,7 +132,7 @@ function translate(input) {
 
 function scoring () {
     document.getElementById("iface").innerHTML = "Hi!";
-    if (1 == 1) {
+    if (yourCard[0] == "hi") {
         $("#iface").hide();
 
     }
