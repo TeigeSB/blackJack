@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackjack</title>
+    <script src="java.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body onload="load()">
+<button onclick="initialCards()">New Game</button>
+<br>
+<button onclick="scoring()">scoreTest</button>
+<button onclick="hit()">Hit</button>
+<br>
+<p>Your Cards</p>
+<div id="cards"></div>
+<br>
+<p>Dealer Cards</p>
+<div id="dealer"></div>
+<div id="iface">
+    <button onclick="eleven()">Ace is an Eleven</button>
+    <button onclick="one()">Ace is a One</button>
+</div>
+</body >
+</html>
