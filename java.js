@@ -14,6 +14,7 @@ var playerResult = "";
 
 function load() {
     shuffle();
+    $("#iface").hide();
 }
 
 function Card(suit, number) {
@@ -131,9 +132,10 @@ function translate(input) {
 }
 
 function scoring () {
-    document.getElementById("iface").innerHTML = "Hi!";
-    if (yourCard[0] == "hi") {
-        $("#iface").hide();
+    console.log(yourCard[0][1]);
+    console.log(yourCard[1][1])
+    if (yourCard[0][1] == 1 || yourCard[1][1] == 1) {
+        $("#iface").show();
 
     }
 }
