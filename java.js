@@ -133,9 +133,14 @@ function translate(input) {
 
 function scoring () {
     console.log(yourCard[0][1]);
-    console.log(yourCard[1][1])
-    if (yourCard[0][1] == 1 || yourCard[1][1] == 1) {
+    console.log(yourCard[1][1]);
+    for (var i = 0; i < 52; i++)
+    if (yourCard[i][1] == 1) {
         $("#iface").show();
 
     }
+}
+
+function eleven() {
+
 }
