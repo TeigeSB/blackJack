@@ -15,6 +15,7 @@ var playerResult = 0;
 function load() {
     shuffle();
     $("#iface").hide();
+    $("#hit").hide();
 }
 
 function Card(suit, number) {
@@ -53,6 +54,7 @@ function initialCards() {
         button++;
         document.getElementById("cards").innerHTML = yourCard + " ";
         document.getElementById("dealer").innerHTML = dealerCard + " ";
+        $("#hit").show();
         scoring()
     } else if (button == 1) {
         location.reload()
@@ -140,5 +142,11 @@ function scoring () {
 }
 
 function eleven() {
+    playerResult += 11;
+    $("#iface").hide();
+}
 
+function one() {
+    playerResult += 1;
+    $("#iface").hide();
 }
