@@ -9,8 +9,8 @@ var button = 0;
 var deck = [];
 var yourCard = [];
 var dealerCard = [];
-var dealerResult = "";
-var playerResult = "";
+var dealerResult = 0;
+var playerResult = 0;
 
 function load() {
     shuffle();
@@ -20,13 +20,7 @@ function load() {
 function Card(suit, number) {
     this.suit = suit;
     this.number = number;
-    this.isAce = function() {
-        // ask user
-        // if(answer==1 {
-        //     this.number = 1;
-        // }
-        // this.number = 11;
-    }
+
 }
 
 function shuffle() {
@@ -59,6 +53,9 @@ function initialCards() {
         button++;
         document.getElementById("cards").innerHTML = yourCard + " ";
         document.getElementById("dealer").innerHTML = dealerCard + " ";
+        scoring()
+    } else if (button == 1) {
+        location.reload()
     }
 }
 
@@ -67,6 +64,7 @@ function hit () {
     console.log(yourCard);
     yourCard.push(x);
     document.getElementById("cards").innerHTML = yourCard + " "
+    scoring()
 }
 
 function dealerHit() {
