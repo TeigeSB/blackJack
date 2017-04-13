@@ -9,8 +9,8 @@ var button = 0;
 var deck = [];
 var yourCard = [];
 var dealerCard = [];
-var dealerResult = "";
-var playerResult = "";
+var dealerResult = 0;
+var playerResult = 0;
 
 function load() {
     shuffle();
@@ -129,6 +129,18 @@ function translate(input) {
     arr.push(x);
     arr.push(y);
     return arr
+}
+
+
+function transScore(input) {
+    var result = 0
+    if (input >= 2 && input <= 10) {
+        result = input
+    }
+    if (input >= 11) {
+        result = 10
+    }
+    return result
 }
 
 function scoring () {
