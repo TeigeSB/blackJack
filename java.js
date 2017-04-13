@@ -2,25 +2,31 @@
  * Created by h205p3 on 3/30/17.
  */
 
-/** change here  gerer
+/** change here
  * Created by h205p3 on 3/8/17.
  */
 var button = 0;
 var deck = [];
 var yourCard = [];
 var dealerCard = [];
-var dealerResult = 0;
-var playerResult = 0;
+var dealerResult = "";
+var playerResult = "";
 
 function load() {
     shuffle();
     $("#iface").hide();
-    scoring()
 }
 
 function Card(suit, number) {
     this.suit = suit;
     this.number = number;
+    this.isAce = function() {
+        // ask user
+        // if(answer==1 {
+        //     this.number = 1;
+        // }
+        // this.number = 11;
+    }
 }
 
 function shuffle() {
@@ -53,9 +59,6 @@ function initialCards() {
         button++;
         document.getElementById("cards").innerHTML = yourCard + " ";
         document.getElementById("dealer").innerHTML = dealerCard + " ";
-        scoring()
-    } else if (button == 1) {
-        location.reload()
     }
 }
 
@@ -64,7 +67,6 @@ function hit () {
     console.log(yourCard);
     yourCard.push(x);
     document.getElementById("cards").innerHTML = yourCard + " "
-    scoring();
 }
 
 function dealerHit() {
@@ -127,18 +129,6 @@ function translate(input) {
     arr.push(x);
     arr.push(y);
     return arr
-}
-
-
-function transScore(input) {
-    var result = 0
-    if (input >= 2 && input <= 10) {
-        result = input
-    }
-    if (input >= 11) {
-        result = 10
-    }
-    return result
 }
 
 function scoring () {
