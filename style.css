@@ -1,0 +1,24 @@
+body {
+    font-family: "Tsukushi A Round Gothic";
+    vertical-align: top;
+}
+
+
+td {
+    vertical-align: top;
+}
+
+
+table {
+    margin-bottom: 4px;
+}
+
+
+button {
+    font-size: 13px;
+}
+
+
+div {
+    margin: 11px 0px;
+}

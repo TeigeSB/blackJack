@@ -9,8 +9,8 @@ var button = 0;
 var deck = [];
 var yourCard = [];
 var dealerCard = [];
-var dealerResult = 0;
-var playerResult = 0;
+var dealerResult = check(dealerCard);
+var playerResult = check(yourCard);
 
 function load() {
     shuffle();
@@ -49,8 +49,8 @@ function initialCards() {
         yourCard.push(yourCards2);
         dealerCard.push(dealerCards1);
         dealerCard.push(dealerCards2);
-        console.log(dealerCard);
-        console.log(yourCard);
+        //console.log(dealerCard);
+        //console.log(yourCard);
         button++;
         document.getElementById("cards").innerHTML = yourCard + " ";
         document.getElementById("dealer").innerHTML = dealerCard + " ";
@@ -63,7 +63,7 @@ function initialCards() {
 
 function hit () {
     var x  = translate(deal());
-    console.log(yourCard);
+    console.log(playerResult);
     yourCard.push(x);
     document.getElementById("cards").innerHTML = yourCard + " "
     scoring()
@@ -83,20 +83,19 @@ function deal() {
 function check(arr) {
     var val = 0
     for (var i = 0; i < (arr.length - 1); i++) {
-        if (arr[i].number == 1) {
-            val = 11
-            return val
-        }
-        if (arr[i].number < 10) {
-            val = i
+        if (arr[i].number <= 10 && arr[i].number >= 2) {
+            val += i
+            console.log(val + "val")
             return val
         }
         else {
-            val = 10
+            val += 10
+            console.log(val + "val")
             return val
         }
     }
 }
+
 
 function translate(input) {
     var x = "";
@@ -132,8 +131,8 @@ function translate(input) {
 }
 
 function scoring () {
-    console.log(yourCard[0][1]);
-    console.log(yourCard[1][1]);
+    //console.log(yourCard[0][1]);
+   //console.log(yourCard[1][1]);
     for (var i = 0; i < 52; i++)
     if (yourCard[i][1] == 1) {
         $("#iface").show();
