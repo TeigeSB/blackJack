@@ -65,8 +65,9 @@ function hit () {
     var x  = translate(deal());
     console.log(yourCard);
     yourCard.push(x);
-    document.getElementById("cards").innerHTML = yourCard + " "
-    scoring()
+    document.getElementById("cards").innerHTML = yourCard + " ";
+    scoring();
+    showCard();
 }
 
 function dealerHit() {
@@ -132,6 +133,7 @@ function translate(input) {
 }
 
 function scoring () {
+    console.log(yourCard[0][0] && yourCard[1][0]);
     console.log(yourCard[0][1]);
     console.log(yourCard[1][1]);
     for (var i = 0; i < 52; i++)
@@ -147,6 +149,29 @@ function eleven() {
 }
 
 function one() {
-    playerResult += 1;
     $("#iface").hide();
+}
+
+function showCard() {
+    var img1 = "https://deckofcardsapi.com/static/img/.png";
+    var img2 = "https://deckofcardsapi.com/static/img/.png";
+        if (yourCard[0][0] == "spades" || yourCard[1][0] == "spades") {
+            for (var i = 0; i < 52; i++) {
+                if (yourCard[0][1] == i && yourCard[0][0] == "spades") {
+                    img1 = "https://deckofcardsapi.com/static/img/" + i + "S" + ".png"
+                } else if (yourCard[1][1] == i && yourCard[0][0] == "spades") {
+                    img2 = "https://deckofcardsapi.com/static/img/" + i + "S" + ".png"
+                }
+        }
+    }
+    return img1 && img2
+}
+
+function show_image(src, width, height, alt) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = 100;
+    img.height = 200;
+    img.alt = alt;
+    document.body.appendChild(img);
 }
