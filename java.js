@@ -169,7 +169,7 @@ function showCard() {
 
 function show_image(src, width, height, alt) {
     var img = document.createElement("img");
-    img.src = src;
+    img.src = src;``
     img.width = 100;
     img.height = 200;
     img.alt = alt;
