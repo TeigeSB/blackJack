@@ -11,6 +11,7 @@ var yourCard = [];
 var dealerCard = [];
 var dealerResult = 0;
 var playerResult = 0;
+var arr01= [];
 
 function load() {
     shuffle();
@@ -67,7 +68,8 @@ function hit () {
     yourCard.push(x);
     document.getElementById("cards").innerHTML = yourCard + " ";
     scoring();
-    showCard();
+    showCard(arr01[0],arr01[1],0);
+    showCard(arr01[0],arr01[1],0)
 }
 
 function dealerHit() {
@@ -82,18 +84,18 @@ function deal() {
 }
 
 function check(arr) {
-    var val = 0
+    var val = 0;
     for (var i = 0; i < (arr.length - 1); i++) {
         if (arr[i].number == 1) {
-            val = 11
+            val = 11;
             return val
         }
         if (arr[i].number < 10) {
-            val = i
+            val = i;
             return val
         }
         else {
-            val = 10
+            val = 10;
             return val
         }
     }
@@ -102,18 +104,17 @@ function check(arr) {
 function translate(input) {
     var x = "";
     var y = 0;
-    var arr = [];
     if (input.suit == 1) {
-        x = "hearts"
+        x = "H"
     }
     if (input.suit == 2) {
-        x = "diamonds"
+        x = "D"
     }
     if (input.suit == 3) {
-        x = "spades"
+        x = "S"
     }
     if (input.suit == 4) {
-        x = "clubs"
+        x = "C"
     }
     if (input.number <= 13) {
         y = input.number
@@ -127,13 +128,14 @@ function translate(input) {
     if (input.number <= 52 && input.number > 39) {
         y = (input.number - 39)
     }
-    arr.push(x);
-    arr.push(y);
-    return arr
+    arr01.push(x);
+    arr01.push(y);
+    return arr01
 }
 
 function scoring () {
-    console.log(yourCard[0][0] && yourCard[1][0]);
+    console.log(yourCard[0][0]);
+    console.log(yourCard[1][0]);
     console.log(yourCard[0][1]);
     console.log(yourCard[1][1]);
     for (var i = 0; i < 52; i++)
@@ -152,25 +154,21 @@ function one() {
     $("#iface").hide();
 }
 
-function showCard() {
+function showCard(suit, number, card) {
     var img1 = "https://deckofcardsapi.com/static/img/.png";
-    var img2 = "https://deckofcardsapi.com/static/img/.png";
-        if (yourCard[0][0] == "spades" || yourCard[1][0] == "spades") {
-            for (var i = 0; i < 52; i++) {
-                if (yourCard[0][1] == i && yourCard[0][0] == "spades") {
-                    img1 = "https://deckofcardsapi.com/static/img/" + i + "S" + ".png"
-                } else if (yourCard[1][1] == i && yourCard[0][0] == "spades") {
-                    img2 = "https://deckofcardsapi.com/static/img/" + i + "S" + ".png"
-                }
+        if (yourCard[card][0] == suit) {
+                if (yourCard[card][1] == i && yourCard[card][0] == suit) {
+                    img1 = "https://deckofcardsapi.com/static/img/" + number + suit + ".png";
+                    return img1
+
         }
     }
-    return img1 && img2
 }
 
 function show_image(src, width, height, alt) {
     var img = document.createElement("img");
-    img.src = src;``
-    img.width = 100;
+    img.src = src;
+    img.width = 150;
     img.height = 200;
     img.alt = alt;
     document.body.appendChild(img);
