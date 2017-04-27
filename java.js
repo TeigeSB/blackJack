@@ -1,7 +1,6 @@
 /**
  * Created by h205p3 on 3/30/17.
  */
-
 /** change here
  * Created by h205p3 on 3/8/17.
  */
@@ -9,9 +8,8 @@ var button = 0;
 var deck = [];
 var yourCard = [];
 var dealerCard = [];
-var dealerResult = check(dealerCard);
-var playerResult = check(yourCard);
-
+//var dealerResult = check(dealerCard.number);
+var playerResult = 0
 function load() {
     shuffle();
     $("#iface").hide();
@@ -21,7 +19,6 @@ function load() {
 function Card(suit, number) {
     this.suit = suit;
     this.number = number;
-
 }
 
 function shuffle() {
@@ -63,10 +60,9 @@ function initialCards() {
 
 function hit () {
     var x  = translate(deal());
-    console.log(playerResult);
     yourCard.push(x);
-    document.getElementById("cards").innerHTML = yourCard + " "
-    scoring()
+    document.getElementById("cards").innerHTML = yourCard + " ";
+    check(x);
 }
 
 function dealerHit() {
@@ -81,21 +77,25 @@ function deal() {
 }
 
 function check(arr) {
-    var val = 0
-    for (var i = 0; i < (arr.length - 1); i++) {
-        if (arr[i].number <= 10 && arr[i].number >= 2) {
-            val += i
-            console.log(val + "val")
-            return val
+    var x = 0
+    console.log(arr + "arr");
+    //for (var i = 0; i < (arr.length - 1); i++) {
+        if (arr[0].number <= 10 && arr[0].number >= 2) {
+            x += arr[0].number;
+            console.log(x + "val");
+            playerResult += x;
+            scoring();
+            return x;
         }
         else {
-            val += 10
-            console.log(val + "val")
-            return val
+            x += 10
+            console.log(x + "val");
+            playerResult += x;
+            scoring();
+            return x;
         }
-    }
+    //}
 }
-
 
 function translate(input) {
     var x = "";
@@ -132,7 +132,7 @@ function translate(input) {
 
 function scoring () {
     //console.log(yourCard[0][1]);
-   //console.log(yourCard[1][1]);
+    //console.log(yourCard[1][1]);
     for (var i = 0; i < 52; i++)
     if (yourCard[i][1] == 1) {
         $("#iface").show();
