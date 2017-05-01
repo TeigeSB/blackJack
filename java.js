@@ -9,8 +9,9 @@ var button = 0;
 var deck = [];
 var yourCard = [];
 var dealerCard = [];
-var dealerResult = check(dealerCard);
-var playerResult = check(yourCard);
+var dealerResult = 0;
+var playerResult = 0;
+var arr01= [];
 
 function load() {
     shuffle();
@@ -42,15 +43,15 @@ function getRandomInt(min, max) {
 function initialCards() {
     if (button == 0) {
         var yourCards1 = translate(deal());
-        var yourCards2 = translate(deal());
+        //var yourCards2 = translate(deal());
         var dealerCards1 = translate(deal());
-        var dealerCards2 = translate(deal());
+        //var dealerCards2 = translate(deal());
         yourCard.push(yourCards1);
-        yourCard.push(yourCards2);
+        //yourCard.push(yourCards2);
         dealerCard.push(dealerCards1);
-        dealerCard.push(dealerCards2);
-        //console.log(dealerCard);
-        //console.log(yourCard);
+        //dealerCard.push(dealerCards2);
+        console.log(dealerCard);
+        console.log(yourCard);
         button++;
         document.getElementById("cards").innerHTML = yourCard + " ";
         document.getElementById("dealer").innerHTML = dealerCard + " ";
@@ -63,10 +64,13 @@ function initialCards() {
 
 function hit () {
     var x  = translate(deal());
-    console.log(playerResult);
-    yourCard.push(x);
-    document.getElementById("cards").innerHTML = yourCard + " "
-    scoring()
+    console.log(yourCard);
+    //yourCard.push(x);
+    console.log(yourCard);
+    document.getElementById("cards").innerHTML = yourCard + " ";
+    scoring();
+    showCard(arr01[0],arr01[1],0);
+    showCard(arr01[0],arr01[1],0)
 }
 
 function dealerHit() {
@@ -81,37 +85,37 @@ function deal() {
 }
 
 function check(arr) {
-    var val = 0
+    var val = 0;
     for (var i = 0; i < (arr.length - 1); i++) {
-        if (arr[i].number <= 10 && arr[i].number >= 2) {
-            val += i
-            console.log(val + "val")
+        if (arr[i].number == 1) {
+            val = 11;
+            return val
+        }
+        if (arr[i].number < 10) {
+            val = i;
             return val
         }
         else {
-            val += 10
-            console.log(val + "val")
+            val = 10;
             return val
         }
     }
 }
 
-
 function translate(input) {
     var x = "";
     var y = 0;
-    var arr = [];
     if (input.suit == 1) {
-        x = "hearts"
+        x = "H"
     }
     if (input.suit == 2) {
-        x = "diamonds"
+        x = "D"
     }
     if (input.suit == 3) {
-        x = "spades"
+        x = "S"
     }
     if (input.suit == 4) {
-        x = "clubs"
+        x = "C"
     }
     if (input.number <= 13) {
         y = input.number
@@ -125,19 +129,29 @@ function translate(input) {
     if (input.number <= 52 && input.number > 39) {
         y = (input.number - 39)
     }
-    arr.push(x);
-    arr.push(y);
-    return arr
+    arr01.push(x);
+    arr01.push(y);
+    console.log(arr01)
+    return arr01
+}
+
+function load1 () {
+    console.log(yourCard[0][0]);
+    console.log(yourCard[0][1]);
+    console.log(yourCard[0][2]);
+    console.log(yourCard[0][3]);
+        showCard(arr01[0][0], arr01[0][1])
+    showCard(arr01[0][2], arr01[0][3])
+
 }
 
 function scoring () {
-    //console.log(yourCard[0][1]);
-   //console.log(yourCard[1][1]);
-    for (var i = 0; i < 52; i++)
-    if (yourCard[i][1] == 1) {
-        $("#iface").show();
 
-    }
+    for (var i = 0; i < 52; i++)
+        if (yourCard[i][1] == 1) {
+            $("#iface").show();
+
+        }
 }
 
 function eleven() {
@@ -146,6 +160,19 @@ function eleven() {
 }
 
 function one() {
-    playerResult += 1;
     $("#iface").hide();
+}
+
+function showCard(suit, number, card) {
+    var img1 = "https://deckofcardsapi.com/static/img/.png";
+    img1 = "https://deckofcardsapi.com/static/img/" + number + suit + ".png";
+            showImage(img1);
+}
+
+function showImage(src) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = 150;
+    img.height = 200;
+    document.body.appendChild(img);
 }
