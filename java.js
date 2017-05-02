@@ -140,8 +140,17 @@ function load1 () {
     console.log(yourCard[0][1]);
     console.log(yourCard[0][2]);
     console.log(yourCard[0][3]);
-        showCard(arr01[0][0], arr01[0][1])
-    showCard(arr01[0][2], arr01[0][3])
+
+    //for (var i = 0; i < 52; i++) {
+        //if (showCard(yourCard[0][i], yourCard[0][i + 1]) == undefined) {
+        //    return false
+        //} else {
+        //    showCard(yourCard[0][i], yourCard[0][i + 1])
+       // }
+   // }
+
+    showCard(yourCard[0][0], yourCard[0][1]);
+    showCard(yourCard[0][2], yourCard[0][3])
 
 }
 
@@ -165,8 +174,25 @@ function one() {
 
 function showCard(suit, number, card) {
     var img1 = "https://deckofcardsapi.com/static/img/.png";
-    img1 = "https://deckofcardsapi.com/static/img/" + number + suit + ".png";
-            showImage(img1);
+        if (number == 1) {
+            img1 = "https://deckofcardsapi.com/static/img/" + "A" + suit + ".png";
+            showImage(img1)
+        } else if (number == 10) {
+            img1 = "https://deckofcardsapi.com/static/img/" + 0 + suit + ".png";
+            showImage(img1)
+        } else if (number == 11) {
+            img1 = "https://deckofcardsapi.com/static/img/" + "J" + suit + ".png";
+            showImage(img1)
+        } else if (number == 12) {
+            img1 = "https://deckofcardsapi.com/static/img/" + "Q" + suit + ".png";
+            showImage(img1)
+        } else if (number == 13) {
+            img1 = "https://deckofcardsapi.com/static/img/" + "K" + suit + ".png";
+            showImage(img1)
+        } else {
+            img1 = "https://deckofcardsapi.com/static/img/" + number + suit + ".png";
+    showImage(img1);
+        }
 }
 
 function showImage(src) {
